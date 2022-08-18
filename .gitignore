@@ -4,6 +4,7 @@
 
 # dependencies
 /node_modules
+/code/11-finished/node_modules
 /.pnp
 .pnp.js
 
