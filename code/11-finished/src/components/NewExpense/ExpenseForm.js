@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const getDefaultState = () => {
     return { title: "", amount: 0, date: "2022-05-05" };
   };
@@ -35,8 +35,14 @@ const ExpenseForm = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log("newExpense", newExpense);
-    setExpense(getDefaultState()); //exec one state setter
+    const expenseData = {
+      title: title,
+      amount: amount,
+      date: date,
+    };
+    console.log("newExpense", expenseData);
+    props.onSaveExpenseData(expenseData);
+    //setExpense(getDefaultState()); //exec one state setter
     setTitle("");
     setDate("2022-05-05");
     setAmount(0);
