@@ -19,6 +19,13 @@ const App = () => {
     });
   };
 
+  const onRefreshHandler = () => {
+    const data = ExpenseState.getDataFromStorage();
+    setExpenses({
+      data,
+    });
+  }
+
   const onExpenseAddedHandler = (item) => {
     item.date = new Date(item.date);
     setExpenses((prevState) => ({
@@ -32,7 +39,7 @@ const App = () => {
     <div>
       <h2>Let's get started!</h2>
       <NewExpense onAddExpense={onExpenseAddedHandler} />
-      <Expenses onFilterChange={onFilterChangeHandler} items={expenses.data} />
+      <Expenses refresh={onRefreshHandler} onFilterChange={onFilterChangeHandler} items={expenses.data} />
     </div>
   );
 };

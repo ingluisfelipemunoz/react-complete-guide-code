@@ -10,13 +10,18 @@ const Expenses = (props) => {
   const onYearSelectedHandler = (year) => {
     props.onFilterChange(year);
   };
+  const onRefreshHandler = () => {
+     props.refresh();
+  }
   // filtering content
   let expensesContent = <p>No expenses found.</p>;
   if (props.items.length > 0) {
     expensesContent = props.items.map((item) => {
       return (
         <ExpenseItem
+          refresh={onRefreshHandler}
           key={item.id}
+          id={item.id}
           title={item.title}
           amount={item.amount}
           date={item.date}
